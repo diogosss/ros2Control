@@ -11,6 +11,7 @@ controller_manager:
 
 diff_drive_controller:
   ros__parameters:
+    use_stamped_vel: true
     # https://github.com/ros-controls/ros2_controllers/blob/master/diff_drive_controller/src/diff_drive_controller_parameter.yaml
     left_wheel_names: ["base_left_wheel_joint"]
     right_wheel_names: ["base_right_wheel_joint"]
