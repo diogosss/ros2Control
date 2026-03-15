@@ -1,0 +1,38 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 50 #10 times per second 10Hz
+    #https://github.com/ros-controls/ros2_controllers
+    #    ros2_controllers/joint_state_broadcaster  type del xml en el repo
+    joint_state_broadcaster: 
+      type: joint_state_broadcaster/JointStateBroadcaster
+    #    ros2_controllers/diff_drive_controller  type del xml en el repo
+    diff_drive_controller:
+      type: diff_drive_controller/DiffDriveController
+
+diff_drive_controller:
+  ros__parameters:
+    # https://github.com/ros-controls/ros2_controllers/blob/master/diff_drive_controller/src/diff_drive_controller_parameter.yaml
+    left_wheel_names: ["base_left_wheel_joint"]
+    right_wheel_names: ["base_right_wheel_joint"]
+    # distancia entre los dos joints o wheels ver en rviz y mobile_base.xacro
+    wheel_separation: 0.45
+    # ver en mobile_base.xacro
+    wheel_radius: 0.1
+    # odom distancia donde empezo el robot y donde se encuentra ahora
+    odom_frame_id: "odom"
+    # ver en el urdf mobile_base.xacro
+    base_frame_id: "base_footprint"
+    # default values de la documentacion
+    pose_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.01]
+    # default values de la documentacion
+    twist_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.01]
+    # 
+    enable_odom_tf: true
+    # 
+    publish_rate: 50.0
+    # Verificar en github la rama para versiones antiguas humble jazzy etc  max_velocity <-> has_velocity_limits
+    linear.x.max_velocity: 1.0
+    linear.x.min_velocity: -1.0
+    # Verificar en github la rama para versiones antiguas humble jazzy etc 
+    angular.z.max_velocity: 1.0
+    angular.z.min_velocity: -1.0
